@@ -19,15 +19,12 @@ func main() {
 	//fmt.Println(string(body))
 	if res.StatusCode != 200 {
 		log.Fatalf("status code error: %d %s", res.StatusCode, res.Status)
-		fmt.Print(err)
 	}
-	fmt.Println("here")
 	root, err := xmlpath.ParseHTML(res.Body)
 	if err != nil {
 		log.Fatal(err)
-		fmt.Println(err)
 	}
-	fmt.Println("here")
+	
 	path, err := xmlpath.Compile("//title")
 
 	if value, ok := path.String(root); ok {
